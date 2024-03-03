@@ -1,0 +1,30 @@
+db.sales.aggregate( [
+{
+$search:  {
+index: 'sample_supplies-sales-dynamic',
+"compound": {
+  "filter": [
+    {
+      "text": {
+        "query": "online",
+        "path": "purchaseMethod"
+      }
+    }
+  ]
+}
+}
+}
+])
+
+
+
+
+    "should": [
+      {
+        "text": {
+          "query": "notepad",
+          "path": "items.name",
+          "score": {"constant": { "value":  5 } }
+        }
+      }
+  ]
